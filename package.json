@@ -10,6 +10,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "axios": "^1.7.3",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "node-cache": "^5.1.2"
   }
 }
