@@ -1,18 +1,34 @@
-
-class Organization {
-    constructor(name, account, website, fuelReimbursementPolicy, speedLimitPolicy, parentOrganizationId = null) {
-      this.name = name;
-      this.account = account;
-      this.website = website;
-      this.fuelReimbursementPolicy = fuelReimbursementPolicy;
-      this.speedLimitPolicy = speedLimitPolicy;
-      this.parentOrganizationId = parentOrganizationId;
-      this.childOrganizations = [];
+class OrganizationManager {
+    constructor() {
+      this.organizations = [];
     }
   
-    addChildOrganization(childOrganization) {
-      this.childOrganizations.push(childOrganization);
+    // Function to create a new organization
+    createOrganization(data) {
+      const newOrganization = {
+        id: this.organizations.length + 1, // Simple auto-increment ID
+        name: data.name,
+        account: data.account,
+        website: data.website,
+        fuelReimbursementPolicy: data.fuelReimbursementPolicy,
+        speedLimitPolicy: data.speedLimitPolicy,
+        parentOrganizationId: data.parentOrganizationId || null,
+        childOrganizations: data.childOrganizations || []
+      };
+      this.organizations.push(newOrganization);
+      return newOrganization;
+    }
+  
+    // Function to find an organization by ID
+    findOrganizationById(id) {
+      return this.organizations.find(org => org.id === id);
+    }
+  
+    // Function to get all organizations
+    getAllOrganizations() {
+      return this.organizations;
     }
   }
-  
-  module.exports = Organization;
+
+  // Export the class
+module.exports = OrganizationManager;
